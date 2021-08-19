@@ -1,0 +1,7 @@
+name: PKMagicSpells
+version: ${project.version}
+depend: [ProtocolLib, WorldEdit, PlaceholderAPI, ProjectKorra, MagicSpells]
+softdepend: [Multiverse-Core]
+main: me.domirusz24.pkmagicspells.PKMagicSpells
+api-version: 1.16
+authors: [DomiRusz24]
