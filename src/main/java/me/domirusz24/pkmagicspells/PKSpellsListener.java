@@ -19,8 +19,11 @@ public class PKSpellsListener implements Listener {
 
     @EventHandler
     public void onSlotChange(PlayerItemHeldEvent event) {
+        BendingPlayer bPlayer = BendingPlayer.getBendingPlayer(event.getPlayer());
+        if (bPlayer == null) return;
+        if (bPlayer.getAbilities() == null) return;
         int slot = event.getNewSlot() + 1;
-        String c = BendingPlayer.getBendingPlayer(event.getPlayer()).getAbilities().get(slot);
+        String c = bPlayer.getAbilities().get(slot);
         if (c == null || c.isEmpty()) return;
         CoreAbility ability = CoreAbility.getAbility(c);
         SpellBender.SPELL_BENDERS.get(event.getPlayer().getName()).slotChange(ability);
