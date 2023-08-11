@@ -1,10 +1,9 @@
 package me.domirusz24.pkmagicspells.activations.element;
 
-import com.projectkorra.projectkorra.ability.SandAbility;
 import com.projectkorra.projectkorra.ability.WaterAbility;
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
+import me.domirusz24.pkmagicspells.activations.AbilityActivation;
+import me.domirusz24.pkmagicspells.activations.AbilityActivationData;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 
 @AbilityActivationData("WATER_TARGET")
 public class WaterActivationTarget extends AbilityActivation {
@@ -13,8 +12,8 @@ public class WaterActivationTarget extends AbilityActivation {
     }
 
     @Override
-    public boolean isReady() {
-        return WaterAbility.isWater(player.getPlayer().getTargetBlock(null, 5));
+    public boolean isFulfilled() {
+        return WaterAbility.isWaterbendable(player.getPlayer().getTargetBlock(null, 5).getType());
     }
 }
 

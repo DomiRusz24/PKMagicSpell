@@ -1,13 +1,9 @@
 package me.domirusz24.pkmagicspells.activations.element;
 
-import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ability.EarthAbility;
-import com.projectkorra.projectkorra.configuration.ConfigManager;
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
-import me.domirusz24.plugincore.util.UtilMethods;
-import org.bukkit.Material;
+import me.domirusz24.pkmagicspells.activations.AbilityActivation;
+import me.domirusz24.pkmagicspells.activations.AbilityActivationData;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 
 @AbilityActivationData("EARTH_NEAR")
 public class EarthActivationNear extends AbilityActivation {
@@ -16,7 +12,7 @@ public class EarthActivationNear extends AbilityActivation {
     }
 
     @Override
-    public boolean isReady() {
-        return !UtilMethods.getNearbyBlocks(player.getPlayer().getLocation(), 3, EarthAbility::isEarth).isEmpty();
+    public boolean isFulfilled() {
+        return EarthAbility.getNearbyEarthBlock(player.getPlayer().getLocation(), 3, 3) != null;
     }
 }

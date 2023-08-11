@@ -1,152 +1,55 @@
 package me.domirusz24.pkmagicspells;
 
-import com.nisovin.magicspells.MagicSpells;
+import me.domirusz24.ext.config.ConfigExtension;
+import me.domirusz24.ext.language.LanguageExtension;
+import me.domirusz24.ext.util.UtilPlugin;
 import me.domirusz24.pkmagicspells.config.MagicSpellsConfig;
+import me.domirusz24.pkmagicspells.managers.AbilityActivationManager;
 import me.domirusz24.pkmagicspells.managers.MagicSpellsManager;
-import me.domirusz24.plugincore.CoreListener;
-import me.domirusz24.plugincore.PluginCore;
-import me.domirusz24.plugincore.core.players.PlayerData;
-import me.domirusz24.plugincore.managers.*;
-import me.domirusz24.plugincore.managers.database.DataBaseManager;
-import me.domirusz24.plugincore.managers.database.DataBaseTable;
-import me.domirusz24.plugincore.util.UtilMethods;
+import me.domirusz24.pkmagicspells.managers.SpellBenderManager;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.event.HandlerList;
 
-import java.util.UUID;
-
-public final class PKMagicSpells extends PluginCore {
-
-    public static PKMagicSpells plugin;
-
-    // ***********************
-
-    public static DataBaseManager SqlM;
-    public static ConfigManager configM;
-    public static CommandManager commandM;
-    public static GUIManager guiM;
-    public static RegionManager regionM;
-    public static WorldEditManager worldEditM;
-    public static ChatGUIManager chatGuiM;
-    public static ScoreboardManager boardM;
-    public static me.domirusz24.plugincore.managers.ProtocolManager nmsM;
-    public static SignManager signM;
-    public static PAPIManager papiM;
-    public static PlayerDataManager playerDataM;
-
-    public static UtilMethods util;
-
-    public static CoreListener listener;
+public final class PKMagicSpells extends UtilPlugin {
 
     @Override
-    protected void loadDependencies() {
-        super.loadDependencies();
+    protected void setUpExtensions() {
+        ConfigExtension.onLoad(new ConfigExtension.Configuration(this, getLogger(), () -> setEnabled(false)));
+
+        LanguageExtension.onLoad(new LanguageExtension.Configuration(
+                getLogger(),
+                "language.yml"
+        ));
+
+        LanguageExtension.getConfiguration().registerAllAnnotations(this);
     }
 
+
+    private MagicSpellsConfig magicSpellsConfig;
+
     @Override
-    protected void loadManagers() {
-        super.loadManagers();
-        SqlM = super.SqlM;
-        configM = super.configM;
-        commandM = super.commandM;
-        guiM = super.guiM;
-        regionM = super.regionM;
-        worldEditM = super.worldEditM;
-        chatGuiM = super.chatGuiM;
-        boardM = super.boardM;
-        nmsM = super.nmsM;
-        signM = super.signM;
-        papiM = super.papiM;
-        playerDataM = super.playerDataM;
+    protected void setUpConfigs() {
+        activationManager = new AbilityActivationManager(eventControl);
+        magicSpellsConfig = new MagicSpellsConfig("MagicSpells.yml", activationManager);
     }
 
-    @Override
-    protected void registerEvents() {
-        super.registerEvents();
-        listener = super.listener;
-    }
-    // ***********************
-
-    public static MagicSpellsManager magicSpellsM;
-
-    public static MagicSpellsConfig magicSpellsConfig;
+    private MagicSpellsManager magicSpellsManager;
+    private AbilityActivationManager activationManager;
+    private SpellBenderManager benderSupplier;
 
     @Override
-    protected void _initialize() {
-        plugin = this;
-    }
-
-    @Override
-    protected void _loadDependencies() {
-
-    }
-
-    @Override
-    protected String databasePrefix() {
-        return "pkmagic";
-    }
-
-    @Override
-    public String packageName() {
-        return "me.domirusz24.pkmagicspells";
-    }
-
-    @Override
-    public DataBaseTable[] getTables() {
-        return new DataBaseTable[0];
-    }
-
-    @Override
-    protected PAPIManager papiManager() {
-        return null;
-    }
-
-    @Override
-    protected void loadConfigs() {
-        util = super.util;
-        configM = super.configM;
-        magicSpellsConfig = new MagicSpellsConfig("MagicSpells.yml", this);
-    }
-
-    @Override
-    public void sqlLoad() {
-
-    }
-
-    @Override
-    protected void _loadManagers() {
+    protected void setUpManagers() {
+        benderSupplier = new SpellBenderManager(activationManager);
         Bukkit.getScheduler().runTask(this, () -> {
-            magicSpellsM = new MagicSpellsManager(this, MagicSpells.getInstance());
-            magicSpellsM.load();
+            magicSpellsManager = new MagicSpellsManager(magicSpellsConfig);
+            magicSpellsManager.load();
         });
     }
 
     @Override
-    protected void _loadCommands() {
-        commandM = super.commandM;
-    }
-
-    public static PKSpellsListener pkListener;
-
-    @Override
-    protected void _registerEvents() {
-        pkListener = new PKSpellsListener();
-        Bukkit.getPluginManager().registerEvents(pkListener, this);
+    protected void setUpListeners() {
+        register(new PKMagicSpellsListener(benderSupplier, activationManager));
     }
 
     @Override
-    protected void _disable() {
-        HandlerList.unregisterAll(pkListener);
-    }
-
-    @Override
-    protected void _shutOffPlugin() {
-        HandlerList.unregisterAll(pkListener);
-    }
-
-    @Override
-    public PlayerData registerPlayer(String s, UUID uuid) {
-        return null;
-    }
+    protected void setUpCommands() {}
 }

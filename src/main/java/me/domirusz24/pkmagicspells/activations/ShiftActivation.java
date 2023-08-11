@@ -1,8 +1,6 @@
 package me.domirusz24.pkmagicspells.activations;
 
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 
@@ -17,9 +15,9 @@ public class ShiftActivation extends AbilityActivation {
     public void onCrouch(PlayerToggleSneakEvent event) {
         if (!event.getPlayer().equals(player.getPlayer())) return;
         if (event.isSneaking()) {
-            ready(true);
+            setFulfill(true);
         } else {
-            ready(false);
+            setFulfill(false);
         }
     }
 }

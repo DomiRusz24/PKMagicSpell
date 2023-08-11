@@ -1,10 +1,9 @@
 package me.domirusz24.pkmagicspells.activations.element;
 
 import com.projectkorra.projectkorra.ability.LavaAbility;
-import com.projectkorra.projectkorra.ability.WaterAbility;
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
+import me.domirusz24.pkmagicspells.activations.AbilityActivation;
+import me.domirusz24.pkmagicspells.activations.AbilityActivationData;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 
 @AbilityActivationData("LAVA_TARGET")
 public class LavaActivationTarget extends AbilityActivation {
@@ -13,7 +12,7 @@ public class LavaActivationTarget extends AbilityActivation {
     }
 
     @Override
-    public boolean isReady() {
+    public boolean isFulfilled() {
         return LavaAbility.isLava(player.getPlayer().getTargetBlock(null, 5));
     }
 }

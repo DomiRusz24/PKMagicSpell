@@ -1,12 +1,9 @@
 package me.domirusz24.pkmagicspells.activations.element;
 
-import com.projectkorra.projectkorra.ability.EarthAbility;
 import com.projectkorra.projectkorra.ability.WaterAbility;
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
-import me.domirusz24.plugincore.util.UtilMethods;
-import org.bukkit.Material;
+import me.domirusz24.pkmagicspells.activations.AbilityActivation;
+import me.domirusz24.pkmagicspells.activations.AbilityActivationData;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 
 @AbilityActivationData("WATER_NEAR")
 public class WaterActivationNear extends AbilityActivation {
@@ -15,7 +12,7 @@ public class WaterActivationNear extends AbilityActivation {
     }
 
     @Override
-    public boolean isReady() {
-        return !UtilMethods.getNearbyBlocks(player.getPlayer().getLocation(), 3, Material.WATER).isEmpty();
+    public boolean isFulfilled() {
+        return WaterAbility.getWaterSourceBlock(player.getPlayer(), 3, false) != null;
     }
 }

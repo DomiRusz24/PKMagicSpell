@@ -1,4 +1,4 @@
-package me.domirusz24.pkmagicspells.config;
+package me.domirusz24.pkmagicspells.activations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

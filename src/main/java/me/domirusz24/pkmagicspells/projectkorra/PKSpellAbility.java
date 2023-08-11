@@ -1,16 +1,16 @@
-package me.domirusz24.pkmagicspells.pk;
+package me.domirusz24.pkmagicspells.projectkorra;
 
-import com.nisovin.magicspells.Spell;
 import com.projectkorra.projectkorra.Element;
 import com.projectkorra.projectkorra.ability.ElementalAbility;
+import lombok.Setter;
+import me.domirusz24.pkmagicspells.model.PKSpell;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-
 public class PKSpellAbility extends ElementalAbility {
 
-    private final PKSpell spell;
+    @Setter
+    private PKSpell spell;
 
     public PKSpellAbility(PKSpell spell) {
         super(null);

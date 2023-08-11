@@ -1,12 +1,9 @@
 package me.domirusz24.pkmagicspells.activations.element;
 
 import com.projectkorra.projectkorra.ability.LavaAbility;
-import com.projectkorra.projectkorra.ability.WaterAbility;
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
-import me.domirusz24.plugincore.util.UtilMethods;
-import org.bukkit.Material;
+import me.domirusz24.pkmagicspells.activations.AbilityActivation;
+import me.domirusz24.pkmagicspells.activations.AbilityActivationData;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 
 @AbilityActivationData("LAVA_NEAR")
 public class LavaActivationNear extends AbilityActivation {
@@ -15,8 +12,8 @@ public class LavaActivationNear extends AbilityActivation {
     }
 
     @Override
-    public boolean isReady() {
-        return !UtilMethods.getNearbyBlocks(player.getPlayer().getLocation(), 3, Material.LAVA).isEmpty();
+    public boolean isFulfilled() {
+        return LavaAbility.getLavaSourceBlock(player.getPlayer(), 3) != null;
     }
 }
 

@@ -1,8 +1,6 @@
 package me.domirusz24.pkmagicspells.activations;
 
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -17,8 +15,8 @@ public class RightClickActivation extends AbilityActivation {
     public void onRightClick(PlayerInteractEvent event) {
         if (!event.getPlayer().equals(player.getPlayer())) return;
         if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
-            ready(true);
-            ready(false);
+            setFulfill(true);
+            setFulfill(false);
         }
     }
 }

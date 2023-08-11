@@ -1,16 +1,12 @@
 package me.domirusz24.pkmagicspells.config.values;
 
 import com.projectkorra.projectkorra.Element;
-import me.domirusz24.plugincore.config.AbstractConfig;
-import me.domirusz24.plugincore.config.configvalue.AbstractConfigValue;
+import me.domirusz24.ext.config.internal.AbstractConfigValue;
+import me.domirusz24.ext.config.internal.ConfigValueHolder;
 
-public class ElementValue extends AbstractConfigValue<Element> {
-    public ElementValue(String path, Element defaultValue, AbstractConfig config) {
+public class ElementValue extends AbstractConfigValue<Element, ElementValue> {
+    public ElementValue(String path, Element defaultValue, ConfigValueHolder config) {
         super(path, defaultValue, config);
-    }
-
-    public ElementValue(String path, Element defaultValue, AbstractConfig config, boolean autoReload) {
-        super(path, defaultValue, config, autoReload);
     }
 
     @Override

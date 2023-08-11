@@ -1,14 +1,9 @@
 package me.domirusz24.pkmagicspells.activations.element;
 
-import com.projectkorra.projectkorra.ability.EarthAbility;
 import com.projectkorra.projectkorra.ability.IceAbility;
-import com.projectkorra.projectkorra.ability.WaterAbility;
-import me.domirusz24.pkmagicspells.config.AbilityActivation;
-import me.domirusz24.pkmagicspells.config.AbilityActivationData;
-import me.domirusz24.pkmagicspells.pk.SpellBender;
-import me.domirusz24.plugincore.util.UtilMethods;
-import org.bukkit.Material;
-
+import me.domirusz24.pkmagicspells.activations.AbilityActivation;
+import me.domirusz24.pkmagicspells.activations.AbilityActivationData;
+import me.domirusz24.pkmagicspells.model.SpellBender;
 @AbilityActivationData("ICE_NEAR")
 public class IceActivationNear extends AbilityActivation {
     public IceActivationNear(SpellBender player) {
@@ -16,7 +11,7 @@ public class IceActivationNear extends AbilityActivation {
     }
 
     @Override
-    public boolean isReady() {
-        return !UtilMethods.getNearbyBlocks(player.getPlayer().getLocation(), 3, Material.ICE, Material.BLUE_ICE, Material.FROSTED_ICE, Material.PACKED_ICE).isEmpty();
+    public boolean isFulfilled() {
+        return IceAbility.getIceSourceBlock(player.getPlayer(), 3) != null;
     }
 }

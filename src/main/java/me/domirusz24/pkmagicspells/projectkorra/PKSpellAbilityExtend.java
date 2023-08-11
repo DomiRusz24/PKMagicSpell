@@ -1,5 +1,6 @@
-package me.domirusz24.pkmagicspells.pk;
+package me.domirusz24.pkmagicspells.projectkorra;
 
+import me.domirusz24.pkmagicspells.model.PKSpell;
 import org.bukkit.entity.Player;
 
 public class PKSpellAbilityExtend extends PKSpellAbility {
