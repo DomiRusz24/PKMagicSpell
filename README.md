@@ -52,11 +52,11 @@ Spells:
 ```
 
 ## Commands:
-| Command             | Description                                        | Permission      |   |   |
-|---------------------|----------------------------------------------------|-----------------|---|---|
-| /pkspell            | Displays plugin information *(+ source code link)* | `none`          |   |   |
-| /pkspell sourcecode | Displays plugin information *(+ source code link)* | `none`          |   |   |
-| /pkspell reload     | Reloads the plugin                                 | `pkspell.admin` |   |   |
+| Command             | Description                                        | Permission      |
+|---------------------|----------------------------------------------------|-----------------|
+| /pkspell            | Displays plugin information *(+ source code link)* | `none`          |
+| /pkspell sourcecode | Displays plugin information *(+ source code link)* | `none`          |
+| /pkspell reload     | Reloads the plugin                                 | `pkspell.admin` |
 
 ## Dependencies:
 - ProjectKorra
