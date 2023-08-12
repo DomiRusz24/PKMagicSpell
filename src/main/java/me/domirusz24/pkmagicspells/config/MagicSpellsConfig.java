@@ -1,3 +1,17 @@
+/*
+ * Copyright (C) 2023 DomiRusz24
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ */
+
 package me.domirusz24.pkmagicspells.config;
 
 import com.nisovin.magicspells.MagicSpells;
@@ -15,8 +29,33 @@ public class MagicSpellsConfig extends Config {
 
     private final CMap<Spell, PKSpell> pkSpells;
 
+    private static final String EXAMPLE_CONFIG =
+            "Spells:\n" +
+            "  INTERNAL_NAME:\n" +
+            "    Element: Air\n" +
+            "    Description: 'Description'\n" +
+            "    Instruction: 'Instruction'\n" +
+            "    Name: 'Displayed Name'\n" +
+            "    # One or multiple of these can be used, by default 'LEFT_CLICK'\n" +
+            "    Activation:\n" +
+            "    - WATER_NEAR\n" +
+            "    - WATER_TARGET\n" +
+            "    - EARTH_TARGET\n" +
+            "    - LAVA_TARGET\n" +
+            "    - ICE_NEAR\n" +
+            "    - PLANT_TARGET\n" +
+            "    - ICE_TARGET\n" +
+            "    - EARTH_NEAR\n" +
+            "    - METAL_TARGET\n" +
+            "    - SHIFT\n" +
+            "    - RIGHT_CLICK\n" +
+            "    - LAVA_NEAR\n" +
+            "    - SAND_TARGET\n" +
+            "    - LEFT_CLICK\n";
+
     public MagicSpellsConfig(String path, AbilityActivationManager manager) {
         super(path);
+        setExampleConfig(EXAMPLE_CONFIG);
         this.manager = manager;
 
         pkSpells = new CMap<>(

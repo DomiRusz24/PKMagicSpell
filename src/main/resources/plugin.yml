@@ -2,5 +2,5 @@ name: PKMagicSpells
 version: ${project.version}
 depend: [ProjectKorra, MagicSpells]
 main: me.domirusz24.pkmagicspells.PKMagicSpells
-api-version: 1.16
+api-version: 1.17
 authors: [DomiRusz24]

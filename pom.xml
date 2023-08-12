@@ -44,6 +44,14 @@
                                     <pattern>me.domirusz24.ext</pattern>
                                     <shadedPattern>me.domirusz24.pkmagicspells.extensions</shadedPattern>
                                 </relocation>
+                                <relocation>
+                                    <pattern>dev.jorel.commandapi</pattern>
+                                    <shadedPattern>me.domirusz24.pkmagicspells.extensions.commandapi</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>net.bytebuddy</pattern>
+                                    <shadedPattern>me.domirusz24.pkmagicspells.extensions.bytebuddy</shadedPattern>
+                                </relocation>
                             </relocations>
                         </configuration>
                     </execution>
@@ -71,22 +79,26 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>minecraft-libraries</id>
+            <name>Minecraft Libraries</name>
+            <url>https://libraries.minecraft.net</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.15-R0.1-SNAPSHOT</version>
+            <version>1.17.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.TheComputerGeek2</groupId>
             <artifactId>MagicSpells</artifactId>
-            <version>4.0-Beta-8</version>
-            <systemPath>${project.basedir}/lib/MagicSpells-4.0-Beta-8.jar</systemPath>
-            <scope>system</scope>
+            <version>3.5-Release</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.ProjectKorra</groupId>
@@ -98,6 +110,18 @@
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>1.14.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.jorel</groupId>
+            <artifactId>commandapi-bukkit-shade</artifactId>
+            <version>9.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mojang</groupId>
+            <artifactId>brigadier</artifactId>
+            <scope>provided</scope>
+            <version>1.0.500</version>
         </dependency>
 
         <dependency>
