@@ -2,6 +2,13 @@
 
 ## *Create ProjectKorra abilities using MagicSpells!*
 
+## Where to download?
+
+- ### [GitHub](https://github.com/DomiRusz24/PKMagicSpell/releases) 
+- ### [Hangar](https://hangar.papermc.io/DomiRusz24/PKMagicSpell/versions)
+- ### [Modrinth](https://modrinth.com/plugin/pkmagicspell/versions)
+- ### [Spigot](https://www.spigotmc.org/resources/pkmagicspell.111973/history)
+
 ## How to use:
 
 `PKMagicSpells/MagicSpells.yml`:
