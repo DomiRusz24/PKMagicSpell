@@ -6,7 +6,7 @@
 
     <groupId>me.domirusz24</groupId>
     <artifactId>PKMagicSpells</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>PKMagicSpells</name>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>dev.jorel</groupId>
             <artifactId>commandapi-bukkit-shade</artifactId>
-            <version>9.0.3</version>
+            <version>9.2.0</version>
         </dependency>
         <dependency>
             <groupId>com.mojang</groupId>
